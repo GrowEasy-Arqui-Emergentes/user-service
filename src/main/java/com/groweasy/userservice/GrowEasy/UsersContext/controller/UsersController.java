@@ -1,5 +1,6 @@
 package com.groweasy.userservice.GrowEasy.UsersContext.controller;
 
+import com.groweasy.userservice.GrowEasy.UsersContext.model.dto.request.CourseDto;
 import com.groweasy.userservice.GrowEasy.UsersContext.model.dto.request.UserRequestDto;
 import com.groweasy.userservice.GrowEasy.UsersContext.model.dto.response.UserResponseDto;
 import com.groweasy.userservice.GrowEasy.UsersContext.model.entity.User;
@@ -7,6 +8,8 @@ import com.groweasy.userservice.GrowEasy.UsersContext.service.UsersService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -41,5 +44,19 @@ public class UsersController {
         var res = usersService.updateUser(id, userRequestDto);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+    // En UsersController.java
+    @PostMapping("/users/{userId}/courses/{courseId}")
+    public ResponseEntity<UserResponseDto> addCourseToUser(
+            @PathVariable Long userId,
+            @PathVariable Long courseId) {
+        UserResponseDto res = usersService.addCourseToUser(userId, courseId);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+    @GetMapping("/users/{userId}/courses")
+    public ResponseEntity<List<CourseDto>> getUserCourses(@PathVariable Long userId) {
+        List<CourseDto> courses = usersService.getUserCourses(userId);
+        return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
+
 
 }
