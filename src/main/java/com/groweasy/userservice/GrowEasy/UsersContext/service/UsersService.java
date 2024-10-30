@@ -1,10 +1,7 @@
 package com.groweasy.userservice.GrowEasy.UsersContext.service;
 
-import com.groweasy.userservice.GrowEasy.UsersContext.model.dto.request.CourseDto;
 import com.groweasy.userservice.GrowEasy.UsersContext.model.dto.request.UserRequestDto;
 import com.groweasy.userservice.GrowEasy.UsersContext.model.dto.response.UserResponseDto;
-
-import java.util.List;
 
 public interface UsersService {
 
@@ -18,10 +15,6 @@ public interface UsersService {
 
     //Update
     UserResponseDto updateUser(Long id, UserRequestDto user);
-
-    UserResponseDto addCourseToUser(Long userId, Long courseId);
-
-    List<CourseDto> getUserCourses(Long userId);
 
 
 

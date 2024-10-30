@@ -15,7 +15,4 @@ public interface UsersRepository extends JpaRepository<User, Long> {
     User findByEmailAndPassword(String email, String password);
 
     Optional<User> findByEmail(String email);
-
-    public interface UserRepository extends JpaRepository<User, Long> {
-    }
 }
